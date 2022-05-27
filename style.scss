@@ -1,5 +1,8 @@
 $main-color: #d2042d;
 
-.title {
-  color: red;
+.title_of_page {
+  color: $main-color;
+}
+.button {
+  background-color: $main-color;
 }
