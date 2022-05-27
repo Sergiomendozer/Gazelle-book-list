@@ -1,6 +1,13 @@
 // Book Class: will be used to create a book object
-
-//UI Class: will be used to create a UI object
+class Book {
+  constructor(title: String, author: String, isbn: String) {
+    this.title = title;
+    this.author = author;
+    this.isbn = isbn;
+  }
+}
+//table Class: will be used to create a UI object
+class table {}
 
 // Store Class: will be used to create a store objects
 
