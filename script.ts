@@ -12,23 +12,25 @@ class book_elements {
 //table Class: will be used to create a table objects
 class table {
   static display_book_list() {
-    // const books: String = Store.get_books(); use for later
-    const list_of_books: { title: String; author: String; isbn: String }[] = [
-      {
-        title: "The Hobbit",
-        author: "J.R.R. Tolkien",
-        isbn: "0-395-07749-X",
-      },
-      {
-        title: "The Lord of the Rings",
-        author: "J.R.R. Tolkien",
-        isbn: "0-395-07749-X",
-      },
-    ];
+    const books = storage.get_books();
+    //! below was used for testing purposes
+    // const list_of_books: { title: String; author: String; isbn: String }[] = [
+    //   {
+    //     title: "The Hobbit",
+    //     author: "J.R.R. Tolkien",
+    //     isbn: "0-395-07749-X",
+    //   },
+    //   {
+    //     title: "The Lord of the Rings",
+    //     author: "J.R.R. Tolkien",
+    //     isbn: "0-395-07749-X",
+    //   },
+    //! ];
+
     //foreach is a loop that will run for each element in the array
-    list_of_books.forEach(function (list_of_books): any {
+    books.forEach(function (books): any {
       //calls function add_book_to_table() to add book to table
-      return table.add_book_to_table(list_of_books);
+      return table.add_book_to_table(books);
     });
   }
   static add_book_to_table(book: {
@@ -43,8 +45,47 @@ class table {
     <td><button class="delete">Delete</button></td>`;
     table.appendChild(row);
   }
+  // function to delete book from table
+  //element is the button that was clicked and event is the event that was triggered
+  static delete_book(el) {
+    if (el.className == "delete") {
+      el.parentElement.parentElement.remove();
+    }
+  }
+  //! clear all information from form
+  //   static clear_form() {
+  //     document.getElementById("title").value = " ";
+  //     document.getElementById("author").value = " ";
+  //     document.getElementById("isbn").innerHTML = " ";
+  //   }
+  //   table.clear_form();
 }
-// Store Class: will be used to create a store objects
+// Storage Class: will store book objects in local storage.
+class storage {
+  static get_books() {
+    let books: book_elements[] = [];
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+    return books;
+  }
+  static add_book(book: book_elements) {
+    const books = storage.get_books();
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+  static remove_book(isbn: String) {
+    const books = storage.get_books();
+    books.forEach(function (book, index) {
+      if (book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+}
 
 // Show list of books in table
 document.addEventListener("DOMContentLoaded", table.display_book_list);
@@ -61,9 +102,35 @@ document.getElementById("forum").addEventListener("submit", function (e) {
     .value;
   const isbn: String = (<HTMLInputElement>document.getElementById("isbn"))
     .value;
-  // calls class books elements to create book object
-  const book = new book_elements(title, author, isbn);
-  console.log(book);
+  //validate form
+  if (title === "" || author === "" || isbn === "") {
+    alert("Please fill in all fields");
+    return false;
+  } else {
+    // calls class books elements to create book object
+    const book = new book_elements(title, author, isbn);
+    console.log(book); //! for testing purposes
+
+    // add book to list
+    table.add_book_to_table(book);
+
+    // add book to local storage
+    storage.add_book(book);
+
+    //! add clear field here
+  }
+  //   // calls class books elements to create book object
+  //   const book = new book_elements(title, author, isbn);
+  //   console.log(book); //! for testing purposes
+  //   // add book to list
+  //   table.add_book_to_table(book);
 });
 
+// calls to clear form
+// table.clear_form();
+
 // remove books when user clicks delete button
+document.getElementById("list").addEventListener("click", function (e) {
+  //remove book from table
+  table.delete_book(e.target);
+});
