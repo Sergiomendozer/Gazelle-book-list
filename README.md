@@ -1,4 +1,4 @@
-<a href="url"><img src="/images/GB_Logo.png" align="left" height="240" width="240" ></a>
+<a href="url"><img src="./images/GB_Logo.png" align="left" height="240" width="240" ></a>
 # Gazelle Book List
 
 Gazelle Book List is for user to create a list of there recommended books or books they want to read.
