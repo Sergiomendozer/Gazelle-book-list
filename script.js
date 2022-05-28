@@ -107,11 +107,7 @@ document.getElementById("forum").addEventListener("submit", function (e) {
         storage.add_book(book);
         //! add clear field here
     }
-    //   // calls class books elements to create book object
-    //   const book = new book_elements(title, author, isbn);
     //   console.log(book); //! for testing purposes
-    //   // add book to list
-    //   table.add_book_to_table(book);
 });
 // calls to clear form
 // table.clear_form();
@@ -120,3 +116,10 @@ document.getElementById("list").addEventListener("click", function (e) {
     //remove book from table
     table.delete_book(e.target);
 });
+//next
+//! add clear field
+//delete comments
+//add comments
+//margin in style.css
+//readme.md file make
+// add to portfolio
