@@ -43,5 +43,20 @@ var table = /** @class */ (function () {
 // Store Class: will be used to create a store objects
 // Show list of books in table
 document.addEventListener("DOMContentLoaded", table.display_book_list);
-// Add books
-// remove books
+// Add books to table
+//function grabs title values
+document.getElementById("forum").addEventListener("submit", function (e) {
+    //prevent default action of submit button
+    e.preventDefault();
+    // gets values: title, author, isbn from form user used
+    var title = document.getElementById("title")
+        .value;
+    var author = document.getElementById("author")
+        .value;
+    var isbn = document.getElementById("isbn")
+        .value;
+    // calls class books elements to create book object
+    var book = new book_elements(title, author, isbn);
+    console.log(book);
+});
+// remove books when user clicks delete button

@@ -49,6 +49,21 @@ class table {
 // Show list of books in table
 document.addEventListener("DOMContentLoaded", table.display_book_list);
 
-// Add books
+// Add books to table
+//function grabs title values
+document.getElementById("forum").addEventListener("submit", function (e) {
+  //prevent default action of submit button
+  e.preventDefault();
+  // gets values: title, author, isbn from form user used
+  const title: String = (<HTMLInputElement>document.getElementById("title"))
+    .value;
+  const author: String = (<HTMLInputElement>document.getElementById("author"))
+    .value;
+  const isbn: String = (<HTMLInputElement>document.getElementById("isbn"))
+    .value;
+  // calls class books elements to create book object
+  const book = new book_elements(title, author, isbn);
+  console.log(book);
+});
 
-// remove books
+// remove books when user clicks delete button
