@@ -7,11 +7,12 @@ var book_elements = /** @class */ (function () {
     }
     return book_elements;
 }());
-//table Class: will be used to create a table objects
+//table Class: will be used to create a table objects to then display book list
 var table = /** @class */ (function () {
     function table() {
     }
     table.display_book_list = function () {
+        //grabs books from local storage to display in table later
         var books = storage.get_books();
         //! below was used for testing purposes
         // const list_of_books: { title: String; author: String; isbn: String }[] = [
@@ -28,11 +29,13 @@ var table = /** @class */ (function () {
         //! ];
         //foreach is a loop that will run for each element in the array
         books.forEach(function (books) {
-            //calls function add_book_to_table() to add book to table
+            //calls function add_book_to_table() to add book to table to display to user
             return table.add_book_to_table(books);
         });
     };
+    // function to add book to table
     table.add_book_to_table = function (book) {
+        //creates a table row element to add to table
         var table = document.getElementById("list");
         var row = document.createElement("tr");
         //insert book title,author, ISBN into table row and a delete button
@@ -46,12 +49,22 @@ var table = /** @class */ (function () {
             el.parentElement.parentElement.remove();
         }
     };
+    //! clear all information from form
+    table.clear_form = function () {
+        // document.getElementById("title").value = 8;
+        //   static clear_form() {
+        //   document.getElementById("title").value = " ";
+        //   document.getElementById("author").value = " ";
+        //     document.getElementById("isbn").innerHTML = " ";
+    };
     return table;
 }());
 // Storage Class: will store book objects in local storage.
+// so if user closes browser or refreshes, books will still be there.
 var storage = /** @class */ (function () {
     function storage() {
     }
+    //function grabs books from local storage and returns them as an array of book objects
     storage.get_books = function () {
         var books = [];
         if (localStorage.getItem("books") === null) {
@@ -62,11 +75,13 @@ var storage = /** @class */ (function () {
         }
         return books;
     };
+    //function to add book to local storage
     storage.add_book = function (book) {
         var books = storage.get_books();
         books.push(book);
         localStorage.setItem("books", JSON.stringify(books));
     };
+    //function to deletes/removes book from local storage
     storage.remove_book = function (isbn) {
         var books = storage.get_books();
         books.forEach(function (book, index) {
@@ -116,10 +131,3 @@ document.getElementById("list").addEventListener("click", function (e) {
     //remove book from table
     table.delete_book(e.target);
 });
-//next
-//! add clear field
-//delete comments
-//add comments
-//margin in style.css
-//readme.md file make
-// add to portfolio

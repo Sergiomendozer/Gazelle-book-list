@@ -9,9 +9,10 @@ class book_elements {
     this.isbn = isbn;
   }
 }
-//table Class: will be used to create a table objects
+//table Class: will be used to create a table objects to then display book list
 class table {
   static display_book_list() {
+    //grabs books from local storage to display in table later
     const books = storage.get_books();
     //! below was used for testing purposes
     // const list_of_books: { title: String; author: String; isbn: String }[] = [
@@ -29,15 +30,17 @@ class table {
 
     //foreach is a loop that will run for each element in the array
     books.forEach(function (books): any {
-      //calls function add_book_to_table() to add book to table
+      //calls function add_book_to_table() to add book to table to display to user
       return table.add_book_to_table(books);
     });
   }
+  // function to add book to table
   static add_book_to_table(book: {
     title: String;
     author: String;
     isbn: String;
   }) {
+    //creates a table row element to add to table
     const table = document.getElementById("list");
     const row = document.createElement("tr");
     //insert book title,author, ISBN into table row and a delete button
@@ -53,15 +56,19 @@ class table {
     }
   }
   //! clear all information from form
-  //   static clear_form() {
-  //     document.getElementById("title").value = " ";
-  //     document.getElementById("author").value = " ";
-  //     document.getElementById("isbn").innerHTML = " ";
-  //   }
+  static clear_form() {
+    // document.getElementById("title").value = 8;
+    //   static clear_form() {
+    //   document.getElementById("title").value = " ";
+    //   document.getElementById("author").value = " ";
+    //     document.getElementById("isbn").innerHTML = " ";
+  }
   //   table.clear_form();
 }
 // Storage Class: will store book objects in local storage.
+// so if user closes browser or refreshes, books will still be there.
 class storage {
+  //function grabs books from local storage and returns them as an array of book objects
   static get_books() {
     let books: book_elements[] = [];
     if (localStorage.getItem("books") === null) {
@@ -71,11 +78,13 @@ class storage {
     }
     return books;
   }
+  //function to add book to local storage
   static add_book(book: book_elements) {
     const books = storage.get_books();
     books.push(book);
     localStorage.setItem("books", JSON.stringify(books));
   }
+  //function to deletes/removes book from local storage
   static remove_book(isbn: String) {
     const books = storage.get_books();
     books.forEach(function (book, index) {
@@ -130,11 +139,3 @@ document.getElementById("list").addEventListener("click", function (e) {
   //remove book from table
   table.delete_book(e.target);
 });
-
-//next
-//! add clear field
-//delete comments
-//add comments
-//margin in style.css
-//readme.md file make
-// add to portfolio
