@@ -49,7 +49,7 @@ var table = /** @class */ (function () {
             el.parentElement.parentElement.remove();
         }
     };
-    //! clear all information from form after submitted
+    // clear all information from form after submitted
     table.clear_form = function () {
         document.getElementById("title").value = " ";
         document.getElementById("author").value = " ";
@@ -118,16 +118,17 @@ document.getElementById("forum").addEventListener("submit", function (e) {
         table.add_book_to_table(book);
         // add book to local storage
         storage.add_book(book);
-        //! add clear field here
         // calls to clear form
         table.clear_form();
     }
     //   console.log(book); //! for testing purposes
 });
-// // calls to clear form
-// table.clear_form();
 // remove books when user clicks delete button
 document.getElementById("list").addEventListener("click", function (e) {
     //remove book from table
     table.delete_book(e.target);
+    //remove book from local storage
+    //   storage.remove_book(
+    //     e.target.parentElement.previousElementSibling.textContent
+    //   );
 });

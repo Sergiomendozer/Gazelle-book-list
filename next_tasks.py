@@ -1,7 +1,4 @@
 # TODO next steps:
-# ! add clear field
-# delete comments
-# add comments
-# margin in style.css
+# delete from storage not working
 # readme.md file make
 # add to portfolio

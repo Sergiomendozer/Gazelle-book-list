@@ -1,10 +1,11 @@
 $main-color: #d2042d; //red
 $lighter-main-color: #04d242; //green
-
+$side-margin: 50px;
 body {
   text-align: center;
-  //add margin here,
-  margin: 0;
+  margin-top: 5px;
+  margin-left: $side-margin;
+  margin-right: $side-margin;
 }
 .title_of_page {
   color: $main-color;
