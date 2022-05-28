@@ -21,4 +21,4 @@ TypeScript, JavaScript, Bootstrap, HTML, CSS, SASS
 
 ## Images
 
-<a href="url"><img src="./images/GB_display.png" height="230" width="400" ></a>
+<a href="url"><img src="./images/GB_display.png" height="230" width="300" ></a>
