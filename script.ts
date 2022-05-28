@@ -25,32 +25,28 @@ class table {
         isbn: "0-395-07749-X",
       },
     ];
+    //foreach is a loop that will run for each element in the array
+    list_of_books.forEach(function (list_of_books): any {
+      //calls function add_book_to_table() to add book to table
+      return table.add_book_to_table(list_of_books);
+    });
+  }
+  static add_book_to_table(book: {
+    title: String;
+    author: String;
+    isbn: String;
+  }) {
+    const table = document.getElementById("list");
+    const row = document.createElement("tr");
+    //insert book title,author, ISBN into table row
+    row.innerHTML = `<td>${book.title}</td><td>${book.author}</td><td>${book.isbn}</td>`;
+    table.appendChild(row);
   }
 }
-// // foreach is a loop that will run for each element in the array
-// // books.ForEach((books) => table.add_book_to_table(books));
-// books.forEach(function (book_elements: String) {
-//   table.add_book_to_table(book_elements);
-// });
-
-//   static add_book_to_table(book: String) {
-//     const table: HTMLTableElement = document.getElementById(
-//       "list"
-//     )! as HTMLTableElement;
-//     const row: HTMLTableRowElement = table.insertRow();
-//     row.insertCell().innerHTML = book_elements.title;
-//     row.insertCell().innerHTML = book_elements.author;
-//     row.insertCell().innerHTML = book_elements.isbn;
-//     const delete_button: HTMLButtonElement = document.createElement("button");
-//     delete_button.innerHTML = "delete";
-//     delete_button.setAttribute("class", "delete");
-//     row.insertCell().appendChild(delete_button);
-//   }
-
 // Store Class: will be used to create a store objects
 
-// Show books
-// document.addEventListener("DOMContentLoaded", table.display_book_list);
+// Show list of books in table
+document.addEventListener("DOMContentLoaded", table.display_book_list);
 
 // Add books
 

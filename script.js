@@ -1,39 +1,47 @@
 // Book_elements Class: will be used to create a book object
-var Book_elements = /** @class */ (function () {
-    function Book_elements(title, author, isbn) {
+var book_elements = /** @class */ (function () {
+    function book_elements(title, author, isbn) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
     }
-    return Book_elements;
+    return book_elements;
 }());
 //table Class: will be used to create a table objects
 var table = /** @class */ (function () {
     function table() {
     }
     table.display_book_list = function () {
-        var books = Store.get_books();
-        // foreach is a loop that will run for each element in the array
-        // books.ForEach((books) => table.add_book_to_table(books));
-        books.forEach(function (Book_elements) {
-            table.add_book_to_table(Book_elements);
+        // const books: String = Store.get_books(); use for later
+        var list_of_books = [
+            {
+                title: "The Hobbit",
+                author: "J.R.R. Tolkien",
+                isbn: "0-395-07749-X"
+            },
+            {
+                title: "The Lord of the Rings",
+                author: "J.R.R. Tolkien",
+                isbn: "0-395-07749-X"
+            },
+        ];
+        //foreach is a loop that will run for each element in the array
+        list_of_books.forEach(function (list_of_books) {
+            //calls function add_book_to_table() to add book to table
+            return table.add_book_to_table(list_of_books);
         });
     };
     table.add_book_to_table = function (book) {
         var table = document.getElementById("list");
-        var row = table.insertRow();
-        row.insertCell().innerHTML = book.title;
-        row.insertCell().innerHTML = book.author;
-        row.insertCell().innerHTML = book.isbn;
-        var delete_button = document.createElement("button");
-        delete_button.innerHTML = "delete";
-        delete_button.setAttribute("class", "delete");
-        row.insertCell().appendChild(delete_button);
+        var row = document.createElement("tr");
+        //insert book title,author, ISBN into table row
+        row.innerHTML = "<td>".concat(book.title, "</td><td>").concat(book.author, "</td><td>").concat(book.isbn, "</td>");
+        table.appendChild(row);
     };
     return table;
 }());
 // Store Class: will be used to create a store objects
-// Show books
+// Show list of books in table
 document.addEventListener("DOMContentLoaded", table.display_book_list);
 // Add books
 // remove books
