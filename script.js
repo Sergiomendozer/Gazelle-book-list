@@ -34,8 +34,8 @@ var table = /** @class */ (function () {
     table.add_book_to_table = function (book) {
         var table = document.getElementById("list");
         var row = document.createElement("tr");
-        //insert book title,author, ISBN into table row
-        row.innerHTML = "<td>".concat(book.title, "</td><td>").concat(book.author, "</td><td>").concat(book.isbn, "</td>");
+        //insert book title,author, ISBN into table row and a delete button
+        row.innerHTML = "<td>".concat(book.title, "</td><td>").concat(book.author, "</td><td>").concat(book.isbn, "</td>\n    <td><button class=\"delete\">Delete</button></td>");
         table.appendChild(row);
     };
     return table;

@@ -1,10 +1,15 @@
-$main-color: #d2042d;
-.body {
+$main-color: #d2042d; //red
+$lighter-main-color: #04d242; //green
+
+body {
   text-align: center;
 }
 .title_of_page {
   color: $main-color;
 }
-.button {
+.add-button {
+  background-color: $lighter-main-color;
+}
+.delete {
   background-color: $main-color;
 }

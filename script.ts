@@ -38,8 +38,9 @@ class table {
   }) {
     const table = document.getElementById("list");
     const row = document.createElement("tr");
-    //insert book title,author, ISBN into table row
-    row.innerHTML = `<td>${book.title}</td><td>${book.author}</td><td>${book.isbn}</td>`;
+    //insert book title,author, ISBN into table row and a delete button
+    row.innerHTML = `<td>${book.title}</td><td>${book.author}</td><td>${book.isbn}</td>
+    <td><button class="delete">Delete</button></td>`;
     table.appendChild(row);
   }
 }
