@@ -19,3 +19,5 @@ TypeScript, JavaScript, Bootstrap, HTML, CSS, SASS
 [View Project](https://github.com/Sergiomendozer/Gazelle-book-list)
 
 ## Images
+
+<a href="url"><img src="./images/" height="230" width="400" ></a>
