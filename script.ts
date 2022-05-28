@@ -134,7 +134,8 @@ document.getElementById("list").addEventListener("click", function (e) {
   //remove book from table
   table.delete_book(e.target);
   //remove book from local storage
-  //   storage.remove_book(
-  //     e.target.parentElement.previousElementSibling.textContent
-  //   );
+  storage
+    .remove_book
+    //   e.target.parentElement.previousElementSibling.textContent
+    ();
 });
