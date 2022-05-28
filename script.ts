@@ -55,15 +55,12 @@ class table {
       el.parentElement.parentElement.remove();
     }
   }
-  //! clear all information from form
+  //! clear all information from form after submitted
   static clear_form() {
-    // document.getElementById("title").value = 8;
-    //   static clear_form() {
-    //   document.getElementById("title").value = " ";
-    //   document.getElementById("author").value = " ";
-    //     document.getElementById("isbn").innerHTML = " ";
+    (<HTMLInputElement>document.getElementById("title")).value = " ";
+    (<HTMLInputElement>document.getElementById("author")).value = " ";
+    (<HTMLInputElement>document.getElementById("isbn")).value = " ";
   }
-  //   table.clear_form();
 }
 // Storage Class: will store book objects in local storage.
 // so if user closes browser or refreshes, books will still be there.
@@ -118,7 +115,7 @@ document.getElementById("forum").addEventListener("submit", function (e) {
   } else {
     // calls class books elements to create book object
     const book = new book_elements(title, author, isbn);
-    console.log(book); //! for testing purposes
+    // console.log(book); //! for testing purposes
 
     // add book to list
     table.add_book_to_table(book);
@@ -127,11 +124,13 @@ document.getElementById("forum").addEventListener("submit", function (e) {
     storage.add_book(book);
 
     //! add clear field here
+    // calls to clear form
+    table.clear_form();
   }
   //   console.log(book); //! for testing purposes
 });
 
-// calls to clear form
+// // calls to clear form
 // table.clear_form();
 
 // remove books when user clicks delete button

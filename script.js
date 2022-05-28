@@ -49,13 +49,11 @@ var table = /** @class */ (function () {
             el.parentElement.parentElement.remove();
         }
     };
-    //! clear all information from form
+    //! clear all information from form after submitted
     table.clear_form = function () {
-        // document.getElementById("title").value = 8;
-        //   static clear_form() {
-        //   document.getElementById("title").value = " ";
-        //   document.getElementById("author").value = " ";
-        //     document.getElementById("isbn").innerHTML = " ";
+        document.getElementById("title").value = " ";
+        document.getElementById("author").value = " ";
+        document.getElementById("isbn").value = " ";
     };
     return table;
 }());
@@ -115,16 +113,18 @@ document.getElementById("forum").addEventListener("submit", function (e) {
     else {
         // calls class books elements to create book object
         var book = new book_elements(title, author, isbn);
-        console.log(book); //! for testing purposes
+        // console.log(book); //! for testing purposes
         // add book to list
         table.add_book_to_table(book);
         // add book to local storage
         storage.add_book(book);
         //! add clear field here
+        // calls to clear form
+        table.clear_form();
     }
     //   console.log(book); //! for testing purposes
 });
-// calls to clear form
+// // calls to clear form
 // table.clear_form();
 // remove books when user clicks delete button
 document.getElementById("list").addEventListener("click", function (e) {
